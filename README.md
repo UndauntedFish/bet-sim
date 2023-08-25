@@ -5,7 +5,7 @@ This Python program simulates the results of different betting techniques common
 Clone the script and use the command "pip install -r requirements.txt" to install the required libraries to run the code.
 
 ## Betting Systems Included
-# Reverse Labouchere
+### Reverse Labouchere
 Reverse Labouchere is a betting technique used in a vast array of betting games. It works by first creating a "labby line" like so:
 5-5-5-5-5
 The first bet's amount will be the sum of the first and last number. In this case it is $10. 

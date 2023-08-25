@@ -29,16 +29,18 @@ I can call reverse_labouchere() with the following arguments:
   win_rate: 0.488 (for 48.8% win chance)
   odds: 1 (for even 1:1 odds)
   number_of_bets: 200
-  ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/b135fd52-565b-4fdf-9702-8c8340eeaaea)
+
+![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/b135fd52-565b-4fdf-9702-8c8340eeaaea)
 
 This gives the following result:
+
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/7c63ee52-8b75-4938-9779-549b23760024)
 
 According to the graph, the Reverse Labouchere betting system appears to turn a profit over a large number of bets. However, it's a good idea to increase the number of bets and run multiple simulations to determine whether this betting system won because it was legitimately profitable, or if it just got on a lucky streak. I'll now run the simulation with 1,000 bets instead of 200:
+
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/d8763ec8-2699-46aa-aed6-732740940f92)
 
 This graph shows that even though the Reverse Labouchere betting system may work in the short term, it will most likely end up losing long term. This is because each loss increases the next bet's size by $5, so all it takes are enough unluckily large losing streaks to lose all of your bankroll.
 
 However, if you do happen to find a bet with favorable odds (such as a 51% win chance at 1:1 odds), this betting system works well long term.
-51% win chance at 1:1 odds:
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/09c3c9c6-ff3b-4b80-b469-a53f6fa67bf5)

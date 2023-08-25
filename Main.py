@@ -3,7 +3,7 @@ import random
 from typing import List
 
 
-def reverse_labouchere(starting_bankroll: float, labby_line: List[int], win_rate: float, odds: float, number_of_bets: int, max_bet_size:float = 0.0):
+def reverse_labouchere(starting_bankroll: float, labby_line: List[int], labby_line_unit: str, win_rate: float, odds: float, number_of_bets: int, max_bet_size: float = 0.0):
     """
     Simulates the Reverse Labouchere betting strategy.
 
@@ -34,7 +34,11 @@ def reverse_labouchere(starting_bankroll: float, labby_line: List[int], win_rate
     equity_curve = [starting_bankroll]
     working_labby_line = labby_line
 
-    for i in range(number_of_bets):
+    for i in range(0, number_of_bets):
+        # If your bankroll is zero or less than zero, break
+        if equity_curve[-1] <= 0.0:
+            break
+        
         # If the working labby line is empty, reset it to the default labby line
         if (not working_labby_line):
             working_labby_line = labby_line
@@ -61,7 +65,10 @@ def reverse_labouchere(starting_bankroll: float, labby_line: List[int], win_rate
 
         if bet_is_win:
             # Use the last bankroll amount to calculate the amount won/lost.
-            equity_curve.append(equity_curve[-1] + (equity_curve[-1] * odds * percent_to_risk))
+            if labby_line_unit == '%':
+                equity_curve.append(equity_curve[-1] + (equity_curve[-1] * odds * percent_to_risk))
+            elif labby_line_unit == '$':
+                equity_curve.append(equity_curve[-1] + percent_to_risk * odds)
             
             # Remove the first and last elements from the working labby line.
             working_labby_line = working_labby_line[1:-1]
@@ -71,7 +78,10 @@ def reverse_labouchere(starting_bankroll: float, labby_line: List[int], win_rate
             #print(working_labby_line)
         else:
             # Use the last bankroll amount to calculate the amount won/lost.
-            equity_curve.append(equity_curve[-1] - (equity_curve[-1] * odds * percent_to_risk))
+            if labby_line_unit == '%':
+                equity_curve.append(equity_curve[-1] - (equity_curve[-1] * odds * percent_to_risk))
+            elif labby_line_unit == '$':
+                equity_curve.append(equity_curve[-1] - percent_to_risk * odds)
             
             # Adds the amount risked on this bet to the end of the working labby line
             working_labby_line.append(percent_to_risk)
@@ -84,19 +94,20 @@ def reverse_labouchere(starting_bankroll: float, labby_line: List[int], win_rate
     return equity_curve
 
 # Run Reverse Labouchere Simulation
-my_equity_curve = reverse_labouchere(5000, [0.001, 0.001, 0.001, 0.001, 0.001], 0.488, 1, 200, 0.2)
+my_equity_curve = reverse_labouchere(5000, [5, 5, 5, 5, 5], '$', 0.51, 1, 1000, 0.2)
 bet_index = []
-for i in range(my_equity_curve):
-    bet_index[i] = i
+for i in range(len(my_equity_curve)):
+    bet_index.append(i)
 
 # Define X and Y variables for plot
 x_values = bet_index
 y_values = my_equity_curve
 
 # Create a line plot
-plt.plot(x_values, y_values, marker = "o")
+plt.plot(x_values, y_values)
 plt.xlabel("Bet #")
 plt.ylabel("Bankroll")
 plt.title("Reverse Labouchere Simulation Results")
-plt.grid(True)
+plt.figure(figsize = (21,21))
 plt.show()
+plt.savefig('Reverse Labouchere Stats.png')

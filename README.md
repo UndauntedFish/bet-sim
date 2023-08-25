@@ -19,7 +19,7 @@ So now your next bet will be $5 + $10 = $15
 
 You repeat this until the line is exhausted. Then you create another line and keep this pattern going.
 
-## Example
+#### Example
 Say I wanted to test out whether the Reverse Labouchere betting system turns out a profit, assuming a 48.8% win chance at 1:1 odds.
 
 I can call reverse_labouchere() with the following arguments:

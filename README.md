@@ -37,6 +37,7 @@ This gives the following result:
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/7c63ee52-8b75-4938-9779-549b23760024)
 
 According to the graph, the Reverse Labouchere betting system appears to turn a profit over a large number of bets. However, it's a good idea to increase the number of bets and run multiple simulations to determine whether this betting system won because it was legitimately profitable, or if it just got on a lucky streak.
+
 I'll now run the simulation with 1,000 bets instead of 200:
 
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/d8763ec8-2699-46aa-aed6-732740940f92)

@@ -1,9 +1,9 @@
-import pandas as pd
-import numpy as np
+import matplotlib.pyplot as plt
 import random
+from typing import List
 
 
-def reverse_labouchere(starting_bankroll, labby_line, win_rate, odds, number_of_bets, max_bet_size = 0.0):
+def reverse_labouchere(starting_bankroll: float, labby_line: List[int], win_rate: float, odds: float, number_of_bets: int, max_bet_size:float = 0.0):
     """
     Simulates the Reverse Labouchere betting strategy.
 
@@ -34,10 +34,19 @@ def reverse_labouchere(starting_bankroll, labby_line, win_rate, odds, number_of_
     equity_curve = [starting_bankroll]
     working_labby_line = labby_line
 
-    for _ in range(number_of_bets):
-        # Get the percentage to risk for this bet. If labby line is 1-2-3-4-5, it will be 1+5=6%.
-        percent_to_risk = working_labby_line[0] + working_labby_line[-1]
-
+    for i in range(number_of_bets):
+        # If the working labby line is empty, reset it to the default labby line
+        if (not working_labby_line):
+            working_labby_line = labby_line
+        
+        # Get the percentage to risk for this bet. 
+        # If labby line is 1-2-3-4-5, it will be 1+5=6%.
+        # If the labby line is a single digit (like 3), it will be 3%
+        if (len(working_labby_line) >= 2):
+            percent_to_risk = working_labby_line[0] + working_labby_line[-1]
+        else:
+            percent_to_risk = working_labby_line[-1]
+        
         # Reset the working labby line to the initial labby line if the bet size exceeds the maximum allowed bet size
         if (max_bet_size > 0.0 and percent_to_risk > max_bet_size):
             working_labby_line = labby_line
@@ -46,20 +55,48 @@ def reverse_labouchere(starting_bankroll, labby_line, win_rate, odds, number_of_
         # random.random() draws a random number between 0.0 and 1.0
         bet_is_win = random.random() < win_rate
 
+        # Debug print statements to determine if the labby line and position sizing is worked out correctly for the bet
+        #print("Labby Line Before: " + str(equity_curve[-1]) + " " + str(odds) + " " + str(percent_to_risk))
+        #print(working_labby_line)
+
         if bet_is_win:
             # Use the last bankroll amount to calculate the amount won/lost.
-            equity_curve.append(equity_curve[-1] * odds * percent_to_risk)
+            equity_curve.append(equity_curve[-1] + (equity_curve[-1] * odds * percent_to_risk))
             
             # Remove the first and last elements from the working labby line.
             working_labby_line = working_labby_line[1:-1]
+
+            # Debug print statements to test whether wins are being calculated and processed correctly.
+            #print("Labby Line After Win: " + str(equity_curve[-1]) + " " + str(odds) + " " + str(percent_to_risk))
+            #print(working_labby_line)
         else:
             # Use the last bankroll amount to calculate the amount won/lost.
-            equity_curve.append(equity_curve[-1] * -odds * percent_to_risk)
+            equity_curve.append(equity_curve[-1] - (equity_curve[-1] * odds * percent_to_risk))
             
             # Adds the amount risked on this bet to the end of the working labby line
             working_labby_line.append(percent_to_risk)
+            
+            # Debug print statements to test whether losses are being calculated and processed correctly.
+            #print("Labby Line After Loss: " + str(equity_curve[-1]) + " " + str(odds) + " " + str(percent_to_risk))
+            #print(working_labby_line)
+
     
     return equity_curve
 
-my_equity_curve = reverse_labouchere(5000, [5, 5, 5, 5, 5], 0.488, 1, 10)
-print(my_equity_curve)
+# Run Reverse Labouchere Simulation
+my_equity_curve = reverse_labouchere(5000, [0.001, 0.001, 0.001, 0.001, 0.001], 0.488, 1, 200, 0.2)
+bet_index = []
+for i in range(my_equity_curve):
+    bet_index[i] = i
+
+# Define X and Y variables for plot
+x_values = bet_index
+y_values = my_equity_curve
+
+# Create a line plot
+plt.plot(x_values, y_values, marker = "o")
+plt.xlabel("Bet #")
+plt.ylabel("Bankroll")
+plt.title("Reverse Labouchere Simulation Results")
+plt.grid(True)
+plt.show()

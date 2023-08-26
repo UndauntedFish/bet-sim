@@ -23,12 +23,12 @@ Clone the script and use the command "pip install -r requirements.txt" to instal
 Say I wanted to test out whether the Reverse Labouchere betting system turns out a profit, assuming a 48.8% win chance at 1:1 odds.
 
 I can call reverse_labouchere() with the following arguments:
-  starting bankroll: $5,000
-  labby-line: [5, 5, 5, 5, 5] (for a 5-5-5-5-5 labby line)
-  labby_line_unit: $ (since the numbers in the labby line represent $5 not 5% of the bankroll)
-  win_rate: 0.488 (for 48.8% win chance)
-  odds: 1 (for even 1:1 odds)
-  number_of_bets: 200
+- starting bankroll: $5,000
+- labby-line: [5, 5, 5, 5, 5] (for a 5-5-5-5-5 labby line)
+- labby_line_unit: $ (since the numbers in the labby line represent $5 not 5% of the bankroll)
+- win_rate: 0.488 (for 48.8% win chance)
+- odds: 1 (for even 1:1 odds)
+- number_of_bets: 200
 
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/b135fd52-565b-4fdf-9702-8c8340eeaaea)
 

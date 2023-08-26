@@ -1,9 +1,6 @@
 # bet-sim
 This Python program simulates the results of different betting techniques commonly used in games such as blackjack, baccarat, sports betting, and roulette.
 
-## Usage
-Clone the script and use the command "pip install -r requirements.txt" to install the required libraries to run the code.
-
 ## Betting Systems Included
 ### Reverse Labouchere
 Reverse Labouchere is a betting technique used in a vast array of betting games. It works by first creating a "labby line" like so:
@@ -19,7 +16,10 @@ So now your next bet will be $5 + $10 = $15
 
 You repeat this until the line is exhausted. Then you create another line and keep this pattern going.
 
-#### Example
+## Usage
+Clone the script and use the command "pip install -r requirements.txt" to install the required libraries to run the code.
+
+## Example
 Say I wanted to test out whether the Reverse Labouchere betting system turns out a profit, assuming a 48.8% win chance at 1:1 odds.
 
 I can call reverse_labouchere() with the following arguments:

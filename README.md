@@ -44,6 +44,6 @@ I'll now run the simulation with 1,000 bets instead of 200:
 
 Shortly before the 400th bet, all $5,000 of bankroll was lost. This graph shows that even though the Reverse Labouchere betting system may work in the short term, it will most likely end up losing long term. This is because each loss increases the next bet's size by $5, so all it takes are enough unluckily large losing streaks to lose all of your bankroll.
 
-However, if you do happen to find a bet with favorable odds (such as a 51% win chance at 1:1 odds), this betting system works well long-term if the bet size is small enough to weather worst-case losing streaks for you winrate (for example, a 65% winrate is unlikely to go beyond 11 consecutive losses in a row. Source: https://maverickcurrencies.com/odds/) 
+However, if you do happen to find a bet with favorable odds (such as a 51% win chance at 1:1 odds), this betting system works well long-term if the bet size is small enough to weather worst-case losing streaks. For example, a bet with a 65% win chance is extremely unlikely to incur more than 10 consecutive losses in a row (source: https://maverickcurrencies.com/odds/). So, if you'd only like to lose $22 of your bankroll, you should risk $2 for each bet (since $22 / 10 consecutive losses = $2).
 
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/09c3c9c6-ff3b-4b80-b469-a53f6fa67bf5)

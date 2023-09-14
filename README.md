@@ -48,5 +48,5 @@ However, if you do happen to find a bet with favorable odds (such as a 51% win c
 
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/09c3c9c6-ff3b-4b80-b469-a53f6fa67bf5)
 
-You can also use high-win-chance bets and fixed/limited bet sizing to limit your losses. For example, a bet with a 65% win chance is extremely unlikely to incur more than 10 consecutive losses in a row (source: https://maverickcurrencies.com/odds/). So, if you'd only like to lose $220 of your bankroll, you should risk a max of $20 for each bet (since $220 / 10 consecutive losses = $22).
+You can also use high-win-chance bets and fixed/limited bet sizing to limit your losses. For example, a bet with a 65% win chance is extremely unlikely to incur 11 consecutive losses in a row (source: https://maverickcurrencies.com/odds/). So, if you'd only like to lose $220 of your bankroll, you should risk a max of $20 for each bet (since $220 / 11 consecutive losses = $20).
 ![image](https://github.com/UndauntedFish/bet-sim/assets/58181651/6bd98abe-ff9a-417a-bad8-5c35a4df9a47)
